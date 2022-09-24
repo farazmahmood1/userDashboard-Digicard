@@ -8,7 +8,7 @@ const YourWebsite = () => {
                 <div className='card'>
                     <div className='card-body'>
                         <div className='row'>
-                            <div className='col-lg-6 m-5'>
+                            <div className='col-lg-5 m-5'>
                                 <h1>This page will enroute you to your profile</h1>
                                 <button className='mt-4 btn btn-primary btn-lg' style={{ borderRadius: "30px" }}><h2> VISIT </h2></button>
                             </div>

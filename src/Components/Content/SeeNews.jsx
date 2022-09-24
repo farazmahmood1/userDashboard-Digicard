@@ -1,69 +1,54 @@
+import axios from 'axios'
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import Baseurl from '../SourceFiles/Baseurl'
 
 const SeeNews = () => {
+
+  const [userData, setUserData] = useState([])
+
+  const recieveData = () => {
+    axios.get(`${Baseurl}fetchNews`)
+      .then((res) => {
+        setUserData(res.data)
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+  useEffect(() => { recieveData() }, [])
+
   return (
     <div className='main-panel'>
       <div className='content-wrapper'>
         <div className='mt-3 mb-4'>
-          <h3 className=''><b> WHAT'S NEW</b></h3>
-        </div>
-        <div className="accordion accordion-flush" id="accordionFlushExample">
-          <div className="accordion-item mb-3">
-            <h2 className="accordion-header" id="flush-headingOne">
-              <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                <i> New amazing cards for your business are available</i>
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  3+
-                  <span className="visually-hidden">unread messages</span>
-                </span>
-
-              </button>
-            </h2>
-            <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-            </div>
-          </div>
-          <div className="accordion-item mb-3">
-            <h2 className="accordion-header" id="flush-headingTwo">
-              <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                <i>New jewlery items is in the stock</i>
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  8+
-                  <span className="visually-hidden">unread messages</span>
-                </span>
-
-              </button>
-            </h2>
-            <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-            </div>
-          </div>
-          <div className="accordion-item mb-3">
-            <h2 className="accordion-header" id="flush-headingThree">
-              <div className=''>
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Accordion Item #3
-                </button>
-              </div>
-            </h2>
-            <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-            </div>
-          </div>
-          <div className="accordion-item mb-3">
-            <h2 className="accordion-header" id="flush-headingFour">
-              <div className=''>
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                  Accordion Item #4
-                </button>
-              </div>
-            </h2>
-            <div id="flush-collapseFour" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-            </div>
-          </div>
+          <h3 className='ms-3'><b> WHAT'S NEW</b></h3>
         </div>
 
+        {
+          userData.map((items) => {
+            return (
+              <>
+                <div id="faq" className='w-100 accordion'>
+                  <div className=''>
+                    <ul className='mt-2 mb-3'>
+                      <li>
+                        <input type="checkbox" defaultChecked />
+                        <i className="fa-sharp fa-solid fa-arrow-down" />
+                        <div class="ribbon"><span class="ribbon__content">new</span></div>
+                        <i />
+                        <h2 className='accordion-header' style={{ color: "#4169e1" }}>{items.title}</h2>
+                        <p><td dangerouslySetInnerHTML={{ __html: items.body }} /></p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </>
+            )
+          })
+        }
       </div>
     </div>
   )
