@@ -6,13 +6,13 @@ const Sidebar = () => {
         <>
             <nav className="sidebar sidebar-offcanvas" id="sidebar">
                 <ul className="nav">
-                    <Link to='/' className="nav-item">
+                    <Link to='/' className="nav-item" style={{textDecoration: "none"}}>
                         <a className="nav-link">
                             <i className="icon-grid menu-icon" />
                             <span className="menu-title">Dashboard</span>
                         </a>
                     </Link>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <a className="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i className="icon-layout menu-icon" />
                             <span className="menu-title">UI Elements</span>
@@ -105,26 +105,26 @@ const Sidebar = () => {
                             <i className="icon-paper menu-icon" />
                             <span className="menu-title">Documentation</span>
                         </a>
-                    </li>
-                    <Link to='/AccountUpdate' className="nav-item" >
+                    </li> */}
+                    <Link to='/AccountUpdate' className="nav-item" style={{textDecoration: "none"}} >
                         <a className="nav-link" >
                             <i className="fa-solid fa-marker" />
                             &nbsp;&nbsp;&nbsp;<span className="menu-title" >Account Update</span>
                         </a>
                     </Link>
-                    <Link to='/SeeNews' className="nav-item">
+                    <Link to='/SeeNews' className="nav-item" style={{textDecoration: "none"}}>
                         <a className="nav-link">
                             <i className="fa-solid fa-newspaper" />
                             &nbsp;&nbsp;&nbsp;  <span className="menu-title">See News</span>
                         </a>
                     </Link>
-                    <Link to='/YourProducts' className="nav-item">
+                    <Link to='/YourProducts' className="nav-item" style={{textDecoration: "none"}}>
                         <a className="nav-link">
                             <i className="fa-solid fa-warehouse" />
                             &nbsp;&nbsp;&nbsp; <span className="menu-title">Your products</span>
                         </a>
                     </Link>
-                    <Link to='/YourWebsite' className="nav-item">
+                    <Link to='/YourWebsite' className="nav-item" style={{textDecoration: "none"}}>
                         <a className="nav-link">
                             <i className="fa-brands fa-edge" />
                             &nbsp;&nbsp;&nbsp; <span className="menu-title">Your Website</span>

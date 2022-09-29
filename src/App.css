@@ -83,7 +83,7 @@ section.faq {
   line-height: 1.45;
   position: relative;
   overflow: hidden;
-  max-height: 1150px;
+  /* max-height: 1150px; */
   will-change: max-height;
   contain: layout;
   display: inline-block;

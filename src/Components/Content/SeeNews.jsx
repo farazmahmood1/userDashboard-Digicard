@@ -7,10 +7,13 @@ import Baseurl from '../SourceFiles/Baseurl'
 const SeeNews = () => {
 
   const [userData, setUserData] = useState([])
+  const [loader, setLoader] = useState(false)
 
   const recieveData = () => {
+    setLoader(true)
     axios.get(`${Baseurl}fetchNews`)
       .then((res) => {
+        setLoader(false)
         setUserData(res.data)
         console.log(res)
       })
