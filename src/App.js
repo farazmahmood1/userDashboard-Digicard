@@ -13,6 +13,7 @@ import UpdateSocial from './Components/Forms/UpdateSocial';
 import UpdatePersonal from './Components/Forms/UpdatePersonal';
 import YourProducts from './Components/Content/YourProducts';
 import YourWebsite from './Components/Content/YourWebsite';
+import AddPortfolio from './Components/Content/AddPortfolio';
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
           < Route path='/UpdateSocial' element={<UpdateSocial />} />
           < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
           < Route path='/YourProducts' element={<YourProducts />} />
-          <Route path='/YourWebsite' element={< YourWebsite />} />
+          < Route path='/YourWebsite' element={< YourWebsite />} />
+          < Route path='/AddPortfolio' element={< AddPortfolio />} />
 
         </Routes>
       </Router>

@@ -124,6 +124,12 @@ const Sidebar = () => {
                             &nbsp;&nbsp;&nbsp; <span className="menu-title">Your products</span>
                         </a>
                     </Link>
+                    <Link to='/AddPortfolio' className="nav-item" style={{textDecoration: "none"}}>
+                        <a className="nav-link">
+                            <i className="fa-solid fa-image" />
+                            &nbsp;&nbsp;&nbsp; <span className="menu-title">Add Portfolio Images</span>
+                        </a>
+                    </Link>
                     <Link to='/YourWebsite' className="nav-item" style={{textDecoration: "none"}}>
                         <a className="nav-link">
                             <i className="fa-brands fa-edge" />
