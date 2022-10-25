@@ -51,11 +51,15 @@ section.faq {
   text-align: left;
 }
 
-.transition, p, ul li i:before, ul li i:after {
+.transition,
+p,
+ul li i:before,
+ul li i:after {
   transition: all 0.3s;
 }
 
-#faq .no-select, #faq h2 {
+#faq .no-select,
+#faq h2 {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   user-select: none;
@@ -371,4 +375,9 @@ section.faq {
     border: 2px dotted #fff;
     outline: 5px solid #DAE7FF;
   }
+}
+
+.fileuploader {
+  margin-top: 150px;
+  margin-bottom: 50px;
 }
