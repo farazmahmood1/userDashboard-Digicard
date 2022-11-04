@@ -5,7 +5,7 @@ const YourWebsite = () => {
     return (
         <div className='main-panel'>
             <div className='content-wrapper'>
-                <div className='card'>
+                <div className='card cardBorder' >
                     <div className='card-body'>
                         <div className='row'>
                             <div className='col-lg-5 m-5'>
@@ -20,6 +20,8 @@ const YourWebsite = () => {
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     )

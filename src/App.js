@@ -15,26 +15,66 @@ import YourProducts from './Components/Content/YourProducts';
 import YourWebsite from './Components/Content/YourWebsite';
 import AddPortfolio from './Components/Content/AddPortfolio';
 
-function App() {
-  return (
-    <div class="container-fluid page-body-wrapper">
-      <Router>
-        <Header />
-        <Theme />
-        <ToDoList />
-        <Sidebar />
-        <Routes>
-          < Route path='/' element={<Dashboard />} />
-          < Route path='/SeeNews' element={<SeeNews />} />
-          < Route path='/AccountUpdate' element={<AccountUpdate />} />
-          < Route path='/UpdateSocial' element={<UpdateSocial />} />
-          < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
-          < Route path='/YourProducts' element={<YourProducts />} />
-          < Route path='/YourWebsite' element={< YourWebsite />} />
-          < Route path='/AddPortfolio' element={< AddPortfolio />} />
+import { AsyncStorage } from 'AsyncStorage';
+import { useState, useEffect } from 'react';
 
-        </Routes>
-      </Router>
+function App() {
+
+  const [login, SetLogin] = useState(true);
+
+  const SetLocalLogin = async () => {
+    try {
+      let userLogin = await AsyncStorage.getItem('logIN');
+      let parsed = JSON.parse(userLogin);
+      if (parsed !== null) {
+        SetLogin(parsed);
+      }
+    }
+    catch {
+      return null;
+    }
+  }
+
+  useEffect(() => {
+    SetLocalLogin()
+  }, [])
+
+
+  return (
+    <div>
+      {
+        login === false ?
+          <>
+            <Router>
+              <Routes>
+                < Route path='/' element={<Login />} />
+                < Route path='/Register' element={<Register />} />
+              </Routes>
+            </Router>
+          </>
+          :
+          <>
+            <div class="container-fluid page-body-wrapper">
+              <Router>
+                <Header />
+                <Theme />
+                <ToDoList />
+                <Sidebar />
+                <Routes>
+                  < Route path='/' element={<Dashboard />} />
+                  < Route path='/SeeNews' element={<SeeNews />} />
+                  < Route path='/AccountUpdate' element={<AccountUpdate />} />
+                  < Route path='/UpdateSocial' element={<UpdateSocial />} />
+                  < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
+                  < Route path='/YourProducts' element={<YourProducts />} />
+                  < Route path='/YourWebsite' element={< YourWebsite />} />
+                  < Route path='/AddPortfolio' element={< AddPortfolio />} />
+
+                </Routes>
+              </Router>
+            </div>
+          </>
+      }
     </div>
   );
 }

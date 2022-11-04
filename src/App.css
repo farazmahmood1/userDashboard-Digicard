@@ -381,3 +381,7 @@ ul li i:after {
   margin-top: 150px;
   margin-bottom: 50px;
 }
+
+.cardBorder {
+  border: 0.5px solid #5ac8fa;
+}

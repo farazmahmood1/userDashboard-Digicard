@@ -16,7 +16,7 @@ const AddPortfolio = () => {
     return (
         <div className='main-panel'>
             <div className='content-wrapper'>
-                <div className='card'>
+                <div className='card cardBorder'>
                     <div className='card-body'>
                         <h2>Add your images for the portfolio from here:</h2>
                         <div className='fileuploader'>
@@ -25,13 +25,13 @@ const AddPortfolio = () => {
                         </div>
                     </div>
                 </div>
-                <div className='card border-primary mt-3'>
+                <div className='card cardBorder mt-3'>
                     <div className="card-body">
                         <h2>Delete your portfolio images:</h2>
                         <div className="d-flex">
 
 
-                            <div className="card m-2" style={{ width: '18rem' , backgroundColor:'#7DA0FA' }}>
+                            <div className="card  m-2" style={{ width: '18rem' , backgroundColor:'#7DA0FA' }}>
                                 <img src={image1} className="card-img-top" alt="..." />
                                 <div className="card-body ">
                                     <h5 className="card-title"> title</h5>

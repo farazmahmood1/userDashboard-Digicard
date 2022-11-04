@@ -1,18 +1,35 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { AsyncStorage } from 'AsyncStorage';
 
 const Header = () => {
+    const navigate = useNavigate()
+
+    const logOut = async () => {
+        AsyncStorage.setItem('logIN', JSON.stringify(false));
+        let login = await AsyncStorage.getItem("logIN")
+        let _login = JSON.parse(login)
+        console.log(_login)
+        if (_login === false) {
+            navigate('/')
+
+            setInterval(() => {
+                window.location.reload()
+            }, 1000);
+        }
+    }
     return (
         <div>
             {/* partial:partials/_navbar.html */}
-            <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" > 
+            <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" >
                 <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                     <a className="navbar-brand brand-logo mr-5" href="index.html"><img src="./images/logo.svg" className="mr-2" alt="logo" /></a>
                     <a className="navbar-brand brand-logo-mini" href="index.html"><img src="./images/logo-mini.svg" alt="logo" /></a>
                 </div>
                 <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end" >
-                    <button style={{boxShadow: "none"}} className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize" >
-                        <span  className="icon-menu"  />
+                    <button style={{ boxShadow: "none" }} className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize" >
+                        <span className="icon-menu" />
                     </button>
                     <ul className="navbar-nav mr-lg-2" >
                         <li className="nav-item nav-search d-none d-lg-block">
@@ -85,7 +102,7 @@ const Header = () => {
                                     <i className="ti-settings text-primary" />
                                     Settings
                                 </a>
-                                <a className="dropdown-item">
+                                <a onClick={logOut} className="dropdown-item">
                                     <i className="ti-power-off text-primary" />
                                     Logout
                                 </a>
