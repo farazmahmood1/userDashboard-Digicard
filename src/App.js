@@ -43,16 +43,16 @@ function App() {
   return (
     <div>
       {
-        login === false ?
-          <>
-            <Router>
-              <Routes>
-                < Route path='/' element={<Login />} />
-                < Route path='/Register' element={<Register />} />
-              </Routes>
-            </Router>
-          </>
-          :
+        // login === false ?
+        //   <>
+        //     <Router>
+        //       <Routes>
+        //         < Route path='/' element={<Login />} />
+        //         < Route path='/Register' element={<Register />} />
+        //       </Routes>
+        //     </Router>
+        //   </>
+        //   :
           <>
             <div class="container-fluid page-body-wrapper">
               <Router>

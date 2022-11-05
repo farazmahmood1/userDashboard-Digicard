@@ -384,4 +384,7 @@ ul li i:after {
 
 .cardBorder {
   border: 0.5px solid #5ac8fa;
+  box-shadow: 14px 5px 15px -2px rgba(0, 0, 0, 0.43);
+  -webkit-box-shadow: 14px 5px 15px -2px rgba(0, 0, 0, 0.43);
+  -moz-box-shadow: 14px 5px 15px -2px rgba(0, 0, 0, 0.43);
 }
