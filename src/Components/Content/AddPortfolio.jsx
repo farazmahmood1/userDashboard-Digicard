@@ -20,7 +20,7 @@ const AddPortfolio = () => {
                     <div className='card-body'>
                         <h2>Add your images for the portfolio from here:</h2>
                         <div className='fileuploader'>
-                            <p>Images will be automatically uploaded!</p>
+                            <p className=''>Images will be automatically uploaded!</p>
                             <FileUploader className='' handleChange={handleChange} name="file" types={fileTypes} />
                         </div>
                     </div>
@@ -28,33 +28,71 @@ const AddPortfolio = () => {
                 <div className='card cardBorder mt-3'>
                     <div className="card-body">
                         <h2>Delete your portfolio images:</h2>
-                        <div className="d-flex">
+                        <div className="portfolioImages">
 
+                            <div className='row'>
 
-                            <div className="card  m-2" style={{ width: '18rem' , backgroundColor:'#7DA0FA' }}>
-                                <img src={image1} className="card-img-top" alt="..." />
-                                <div className="card-body ">
-                                    <h5 className="card-title"> title</h5>
-                                    <a href="#" className="btn btn-danger">Delete</a>
+                                <div className='col-lg-3'>
+                                    <div className="card  m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                        <img src={image1} className="card-img-top" alt="..." />
+                                        <div className="card-body ">
+                                            <h5 className="card-title"> title</h5>
+                                            <a href="#" className="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
 
-                            <div className="card m-2" style={{ width: '18rem' , backgroundColor:'#7DA0FA'  }}>
-                                <img src={image2} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title"> title</h5>
-                                    <a href="#" className="btn btn-danger">Delete</a>
+                                <div className="col-lg-3">
+                                    <div className="card  m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                        <img src={image1} className="card-img-top" alt="..." />
+                                        <div className="card-body ">
+                                            <h5 className="card-title"> title</h5>
+                                            <a href="#" className="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-
-                            <div className="card m-2" style={{ width: '18rem', backgroundColor:'#7DA0FA'  }}>
-                                <img src={image3} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title"> title</h5>
-                                    <a href="#" className="btn btn-danger">Delete</a>
+                                <div className="col-lg-3">
+                                    <div className="card  m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                        <img src={image1} className="card-img-top" alt="..." />
+                                        <div className="card-body ">
+                                            <h5 className="card-title"> title</h5>
+                                            <a href="#" className="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <div className="col-lg-3">
+                                    <div className="card  m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                        <img src={image1} className="card-img-top" alt="..." />
+                                        <div className="card-body ">
+                                            <h5 className="card-title"> title</h5>
+                                            <a href="#" className="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <div className="card  m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                        <img src={image1} className="card-img-top" alt="..." />
+                                        <div className="card-body ">
+                                            <h5 className="card-title"> title</h5>
+                                            <a href="#" className="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <div className="card  m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                        <img src={image1} className="card-img-top" alt="..." />
+                                        <div className="card-body ">
+                                            <h5 className="card-title"> title</h5>
+                                            <a href="#" className="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
