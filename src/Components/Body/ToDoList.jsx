@@ -25,7 +25,19 @@ const ToDoList = () => {
                         </div>
                         <div className="list-wrapper px-3">
                             <ul className="d-flex flex-column-reverse todo-list">
-                                <li>
+
+                                <li className="completed">
+                                    <div className="form-check">
+                                        <label className="form-check-label">
+                                            <input className="checkbox" type="checkbox" defaultChecked />
+                                            Add your Task?
+                                        </label>
+                                    </div>
+                                    <i className="remove ti-close" />
+                                </li>
+
+
+                                {/* <li>
                                     <div className="form-check">
                                         <label className="form-check-label">
                                             <input className="checkbox" type="checkbox" />
@@ -69,7 +81,7 @@ const ToDoList = () => {
                                         </label>
                                     </div>
                                     <i className="remove ti-close" />
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                         <h4 className="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>

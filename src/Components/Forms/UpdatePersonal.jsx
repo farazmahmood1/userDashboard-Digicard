@@ -170,6 +170,21 @@ const UpdatePersonal = () => {
                 <div className='row mt-3'>
                     <div className='col-lg-6'>
                         <div className="mb-3">
+                            <label for="exampleInputPassword1" class="form-label"><b>Profession:</b></label>
+                            <input value={desription} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
+                    </div>
+                    <div className='col-lg-6'>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" class="form-label"><b>Designation:</b></label>
+                            <input value={age} type="number" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='row mt-3'>
+                    <div className='col-lg-6'>
+                        <div className="mb-3">
                             <label for="exampleInputPassword1" class="form-label"><b>Religion:</b></label>
                             <input value={religion} onChange={(e) => setReligion(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
@@ -201,7 +216,17 @@ const UpdatePersonal = () => {
                     <div className='col-lg-12'>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label"><b>Bio</b></label>
-                            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="form-control" id="exampleFormControlTextarea1" rows={6} />
+                            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="form-control" id="exampleFormControlTextarea1" rows={3} />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className='row mt-3'>
+                    <div className='col-lg-12'>
+                        <div className="mb-3">
+                            <label htmlFor="exampleFormControlTextarea1" className="form-label"><b>Professional Description</b></label>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows={6} />
                         </div>
                     </div>
 
