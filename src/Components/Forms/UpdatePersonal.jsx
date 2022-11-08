@@ -26,8 +26,6 @@ const UpdatePersonal = () => {
     const [upwork, setUpwork] = useState('')
     const [fiver, setFiver] = useState('')
 
-    const [userData, setUserData] = useState([])
-
     const submitData = () => {
         const userObj = {
             name: name,
@@ -101,17 +99,12 @@ const UpdatePersonal = () => {
 
         <div className='main-panel'>
             <div className='content-wrapper'>
-
                 <h3 className='mb-5'><b> UPDATE YOUR PERSONAL INFORMATION:</b></h3>
-
                 <div className='row'>
                     <div className='col-lg-6'>
                         <div className="mb-3" style={{ borderColor: name === "" && fieldStatus === true ? "red" : 'white' }}>
                             <label for="exampleInputPassword1" class="form-label"><b>Name:</b></label>
-                            <input
-
-                                value={name}
-                                onChange={(e) => setName(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
@@ -121,7 +114,6 @@ const UpdatePersonal = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className='row mt-3'>
                     <div className='col-lg-6'>
                         <div className="mb-3">
