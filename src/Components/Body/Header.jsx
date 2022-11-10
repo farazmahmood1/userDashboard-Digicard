@@ -94,8 +94,9 @@ const Header = () => {
                             </div>
                         </li>
                         <li className="nav-item nav-profile dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                                <img src="./images/faces/face28.jpg" alt="profile" />
+                            <a className="nav-link dropdown-toggle" href="" data-toggle="dropdown" id="profileDropdown">
+                                {/* <img src="./images/faces/face28.jpg" alt="profile" /> */}
+                                <i className="fa-regular fa-1x fa-user" style={{ fontSize: '19px' }} />
                             </a>
                             <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                 <a className="dropdown-item">

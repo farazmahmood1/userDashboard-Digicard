@@ -53,27 +53,27 @@ function App() {
         //     </Router>
         //   </>
         //   :
-          <>
-            <div class="container-fluid page-body-wrapper">
-              <Router>
-                <Header />
-                <Theme />
-                <ToDoList />
-                <Sidebar />
-                <Routes>
-                  < Route path='/' element={<Dashboard />} />
-                  < Route path='/SeeNews' element={<SeeNews />} />
-                  < Route path='/AccountUpdate' element={<AccountUpdate />} />
-                  < Route path='/UpdateSocial' element={<UpdateSocial />} />
-                  < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
-                  < Route path='/YourProducts' element={<YourProducts />} />
-                  < Route path='/YourWebsite' element={< YourWebsite />} />
-                  < Route path='/AddPortfolio' element={< AddPortfolio />} />
+        <>
+          <div class="container-fluid page-body-wrapper">
+            <Router>
+              <Header />
+              <Theme />
+              <ToDoList />
+              <Sidebar />
+              <Routes>
+                < Route path='/' element={<Dashboard />} />
+                < Route path='/SeeNews' element={<SeeNews />} />
+                < Route path='/AccountUpdate' element={<AccountUpdate />} />
+                < Route path='/UpdateSocial' element={<UpdateSocial />} />
+                < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
+                < Route path='/YourProducts' element={<YourProducts />} />
+                < Route path='/YourWebsite' element={< YourWebsite />} />
+                < Route path='/AddPortfolio' element={< AddPortfolio />} />
 
-                </Routes>
-              </Router>
-            </div>
-          </>
+              </Routes>
+            </Router>
+          </div>
+        </>
       }
     </div>
   );
