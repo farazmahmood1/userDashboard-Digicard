@@ -43,37 +43,37 @@ function App() {
   return (
     <div>
       {
-        // login === false ?
-        //   <>
-        //     <Router>
-        //       <Routes>
-        //         < Route path='/' element={<Login />} />
-        //         < Route path='/Register' element={<Register />} />
-        //       </Routes>
-        //     </Router>
-        //   </>
-        //   :
-        <>
-          <div class="container-fluid page-body-wrapper">
+        login === false ?
+          <>
             <Router>
-              <Header />
-              <Theme />
-              <ToDoList />
-              <Sidebar />
               <Routes>
-                < Route path='/' element={<Dashboard />} />
-                < Route path='/SeeNews' element={<SeeNews />} />
-                < Route path='/AccountUpdate' element={<AccountUpdate />} />
-                < Route path='/UpdateSocial' element={<UpdateSocial />} />
-                < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
-                < Route path='/YourProducts' element={<YourProducts />} />
-                < Route path='/YourWebsite' element={< YourWebsite />} />
-                < Route path='/AddPortfolio' element={< AddPortfolio />} />
-
+                < Route path='/' element={<Login />} />
+                < Route path='/Register' element={<Register />} />
               </Routes>
             </Router>
-          </div>
-        </>
+          </>
+          :
+          <>
+            <div class="container-fluid page-body-wrapper">
+              <Router>
+                <Header />
+                <Theme />
+                <ToDoList />
+                <Sidebar />
+                <Routes>
+                  < Route path='/' element={<Dashboard />} />
+                  < Route path='/SeeNews' element={<SeeNews />} />
+                  < Route path='/AccountUpdate' element={<AccountUpdate />} />
+                  < Route path='/UpdateSocial' element={<UpdateSocial />} />
+                  < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
+                  < Route path='/YourProducts' element={<YourProducts />} />
+                  < Route path='/YourWebsite' element={< YourWebsite />} />
+                  < Route path='/AddPortfolio' element={< AddPortfolio />} />
+
+                </Routes>
+              </Router>
+            </div>
+          </>
       }
     </div>
   );

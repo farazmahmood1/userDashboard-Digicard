@@ -19,6 +19,7 @@ const Header = () => {
             }, 1000);
         }
     }
+
     return (
         <div>
             {/* partial:partials/_navbar.html */}
