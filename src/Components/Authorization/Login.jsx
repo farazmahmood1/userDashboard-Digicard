@@ -1,6 +1,5 @@
 import { AsyncStorage } from 'AsyncStorage'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -33,7 +32,7 @@ const Login = () => {
                     console.log(res)
                     toast.success('Logging In')
 
-                    AsyncStorage.setItem('LogIN', JSON.stringify(true));
+                    AsyncStorage.setItem('LogIn', JSON.stringify(true));
                     AsyncStorage.setItem('name', JSON.stringify(name));
                     AsyncStorage.setItem('password', JSON.stringify(password))
 
@@ -70,20 +69,21 @@ const Login = () => {
                                     <div className="mt-3">
                                         <a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn " onClick={signIn} >SIGN IN</a>
                                     </div>
-                                    <div className="my-2 d-flex justify-content-between align-items-center">
+                                    {/* <div className="my-2 d-flex justify-content-between align-items-center">
                                         <div className="form-check">
-                                            <label className="form-check-label text-muted">
-                                                <input type="checkbox" className="form-check-input" />
-                                                Keep me signed in
-                                            </label>
+                                            <div>
+                                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                                                <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                                            </div>
+
                                         </div>
-                                        <a href="#" className="auth-link text-black">Forgot password?</a>
-                                    </div>
-                                    <div className="mb-2">
+                                        <a href="#" className="auth-link text-black ">Forgot password?</a>
+                                    </div> */}
+                                    {/* <div className="mb-2">
                                         <button type="button" className="btn btn-block btn-facebook auth-form-btn">
                                             <i className="ti-facebook mr-2" />Connect using facebook
                                         </button>
-                                    </div>
+                                    </div> */}
                                     <div className="text-center mt-4 font-weight-light">
                                         Don't have an account? <Link to='/Register' className="text-primary">Create</Link>
                                     </div>

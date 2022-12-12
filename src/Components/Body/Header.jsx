@@ -7,8 +7,8 @@ const Header = () => {
     const navigate = useNavigate()
 
     const logOut = async () => {
-        AsyncStorage.setItem('logIN', JSON.stringify(false));
-        let login = await AsyncStorage.getItem("logIN")
+        AsyncStorage.setItem('logIn', JSON.stringify(false));
+        let login = await AsyncStorage.getItem("logIn")
         let _login = JSON.parse(login)
         console.log(_login)
         if (_login === false) {

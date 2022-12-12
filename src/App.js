@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './Components/Body/Header';
 import Sidebar from './Components/Body/Sidebar';
 import Dashboard from './Components/Content/Dashboard';
@@ -24,17 +24,16 @@ function App() {
 
   const SetLocalLogin = async () => {
     try {
-      let userLogin = await AsyncStorage.getItem('logIN');
+      let userLogin = await AsyncStorage.getItem('logIn');
       let parsed = JSON.parse(userLogin);
       if (parsed !== null) {
         SetLogin(parsed);
       }
-    }
+    } 
     catch {
       return null;
     }
   }
-
   useEffect(() => {
     SetLocalLogin()
   }, [])
@@ -47,7 +46,7 @@ function App() {
           <>
             <Router>
               <Routes>
-                < Route path='/' element={<Login />} />
+                < Route path='/' exact element={<Login />} />
                 < Route path='/Register' element={<Register />} />
               </Routes>
             </Router>
