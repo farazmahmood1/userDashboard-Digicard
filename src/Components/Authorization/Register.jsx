@@ -3,8 +3,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Baseurl from '../SourceFiles/Baseurl'
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
+    let navigate = useNavigate()
 
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
@@ -32,7 +35,8 @@ const Register = () => {
                     console.log(res)
                     toast.success('Registerred successfully')
                     setInterval(() => {
-                        window.location.reload(true)
+                        // window.location.reload(true)
+                        navigate('/'); 
                     }, 2000)
                 })
                 .catch((err) => {

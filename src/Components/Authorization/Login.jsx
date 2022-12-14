@@ -15,6 +15,7 @@ const Login = () => {
         if (!name && !password) {
             toast.warning('Please fill all fields')
             setFieldStatus(true)
+
         }
         else if (name && !password) {
             toast.warning('Please enter your password')
@@ -29,13 +30,12 @@ const Login = () => {
             }
             axios.post(`${Baseurl}customerlogin`, userObj)
                 .then((res) => {
-                    console.log(res)
+                    console.log(res.data.customer)
                     toast.success('Logging In')
 
-                    AsyncStorage.setItem('LogIn', JSON.stringify(true));
-                    AsyncStorage.setItem('name', JSON.stringify(name));
-                    AsyncStorage.setItem('password', JSON.stringify(password))
-
+                    AsyncStorage.setItem('logIN', JSON.stringify(true));
+                    AsyncStorage.setItem('password', JSON.stringify(password));
+                    AsyncStorage.setItem('user', JSON.stringify(res.data.customer));
                     setInterval(() => {
                         window.location.reload(true)
                     }, 1500)

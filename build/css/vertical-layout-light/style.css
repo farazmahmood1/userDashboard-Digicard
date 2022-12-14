@@ -28450,6 +28450,7 @@ div.tagsinput span.tag a {
 
 .content-wrapper {
   background: #F5F7FF;
+  /* background: #595959; */
   padding: 2.375rem 2.375rem;
   width: 100%;
   -webkit-flex-grow: 1;
@@ -29760,6 +29761,7 @@ div.tagsinput span.tag a {
   background: #4B49AC;
 }
 
+/* change the navbar color */
 .navbar.navbar-dark .navbar-menu-wrapper {
   background: #282f3a;
 }

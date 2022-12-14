@@ -136,27 +136,23 @@ const UpdatePersonal = () => {
                             <input value={whatsappbusiness} onChange={(e) => setWhatsappBussiness(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
-                    <div className='col-lg-6'>
-                        <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Address:</b></label>
-                            <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                    </div>
-                </div>
 
-                <div className='row mt-3'>
-                    <div className='col-lg-6'>
-                        <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Short Description:</b></label>
-                            <input value={desription} onChange={(e) => setDescription(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                    </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
                             <label for="exampleInputPassword1" class="form-label"><b>Age:</b></label>
                             <input value={age} onChange={(e) => setAge(e.target.value)} type="number" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
+                </div>
+
+                <div className='row mt-3'>
+                    <div className='col-lg-12'>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" class="form-label"><b>Address:</b></label>
+                            <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
+                    </div>
+
                 </div>
 
                 <div className='row mt-3'>

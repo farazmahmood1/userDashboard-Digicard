@@ -19,25 +19,24 @@ import { AsyncStorage } from 'AsyncStorage';
 import { useState, useEffect } from 'react';
 
 function App() {
-
   const [login, SetLogin] = useState(true);
 
+ 
   const SetLocalLogin = async () => {
     try {
-      let userLogin = await AsyncStorage.getItem('logIn');
+      let userLogin = await AsyncStorage.getItem("logIN");
       let parsed = JSON.parse(userLogin);
       if (parsed !== null) {
         SetLogin(parsed);
       }
-    } 
-    catch {
+    } catch {
       return null;
     }
-  }
-  useEffect(() => {
-    SetLocalLogin()
-  }, [])
+  };
 
+  useEffect(() => {
+    SetLocalLogin();
+  }, []);
 
   return (
     <div>
@@ -60,9 +59,9 @@ function App() {
                 <ToDoList />
                 <Sidebar />
                 <Routes>
-                  < Route path='/' element={<Dashboard />} />
+                  {/* < Route path='/' element={<Dashboard />} /> */}
+                  < Route path='/' element={<AccountUpdate />} />
                   < Route path='/SeeNews' element={<SeeNews />} />
-                  < Route path='/AccountUpdate' element={<AccountUpdate />} />
                   < Route path='/UpdateSocial' element={<UpdateSocial />} />
                   < Route path='/UpdatePersonal' element={<UpdatePersonal />} />
                   < Route path='/YourProducts' element={<YourProducts />} />
