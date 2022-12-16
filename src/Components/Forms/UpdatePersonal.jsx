@@ -28,6 +28,7 @@ const UpdatePersonal = () => {
     const [professionalDesc, setProfessionalDesc] = useState('')
     const [profession, setProfession] = useState('')
     const [designation, setDesignation] = useState('')
+    const [userID, setUserID] = useState('')
 
     const submitData = () => {
 
@@ -65,7 +66,7 @@ const UpdatePersonal = () => {
 
     const fetchData = () => {
         var formdata = new FormData();
-        formdata.append("user_id", "34");
+        formdata.append("user_id", `${userID}`);
 
         var requestOptions = {
             method: 'POST',
@@ -99,7 +100,19 @@ const UpdatePersonal = () => {
             .catch(error => console.log('error', error));
     }
 
-    useEffect(() => { fetchData() }
+    console.log(userID)
+    const SetLocalLogin = async () => {
+        try {
+            let user = await localStorage.getItem('user');
+            let parsed_user = JSON.parse(user)
+            if (parsed_user) {
+                setUserID(parsed_user.id)
+            }
+        } catch {
+            return null;
+        }
+    }
+    useEffect(() => { fetchData(); SetLocalLogin() }
         , [])
 
     return (
@@ -139,7 +152,7 @@ const UpdatePersonal = () => {
                 <div className='row mt-3' >
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>WhatsApp Businness:</b></label>
+                            <label for="exampleInputPassword1" class="form-label"><b>WhatsApp Business:</b></label>
                             <input value={whatsappbusiness} onChange={(e) => setWhatsappBussiness(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>

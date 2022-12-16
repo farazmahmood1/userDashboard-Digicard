@@ -22,6 +22,7 @@ const UpdateSocial = () => {
     const [linkedin, setLinkedin] = useState('')
     const [github, setGithub] = useState('')
     const [stackoverflow, setStackOverflow] = useState('')
+    const [userID, setUserID] = useState('')
 
     const submitData = () => {
 
@@ -55,7 +56,7 @@ const UpdateSocial = () => {
 
     const fetchData = () => {
         var formdata = new FormData();
-        formdata.append("user_id", "15");
+        formdata.append("user_id", `${userID}`);
 
         var requestOptions = {
             method: 'POST',
@@ -67,26 +68,40 @@ const UpdateSocial = () => {
             .then(response => response.json())
             .then(result => {
 
-                setSnapchat(result.data[0].snapchat)
-                setInstagram(result.data[0].instagram)
                 setFacebook(result.data[0].facebook)
-                setTelegram(result.data[0].telegram)
+                setInstagram(result.data[0].instagram)
                 setTwitter(result.data[0].twitter)
+                setSnapchat(result.data[0].snapchat)
+                setTelegram(result.data[0].telegram)
                 setTiktok(result.data[0].tiktok)
-                setGithub(result.data[0].github)
                 setSkype(result.data[0].skype)
                 setPintrest(result.data[0].printest)
-                stackoverflow(result.data[0].stackoverflow)
-                setLinkedin(result.data[0].linkedin)
                 setEmail(result.data[0].gmail)
+                setLinkedin(result.data[0].linkedin)
+                setGithub(result.data[0].github)
+                stackoverflow(result.data[0].stackoverflow)
 
                 console.log(result)
             })
             .catch(error => console.log('error', error));
     }
+    console.log(userID)
+    const SetLocalLogin = async () => {
+        try {
+            let user = await localStorage.getItem('user');
+            let parsed_user = JSON.parse(user)
+            if (parsed_user) {
+                setUserID(parsed_user.id)
+            }
+        } catch {
+            return null;
+        }
+    }
     useEffect(() => {
-        fetchData()
-    }, [])
+        fetchData();
+        SetLocalLogin()
+    }
+        , [])
 
     return (
         <div className='main-panel'>
@@ -119,7 +134,7 @@ const UpdateSocial = () => {
                     <div className='col-lg-6'>
                         <div className="mb-3 d-flex">
                             <i className="fa-brands fa-2x fa-snapchat mt-1" />&nbsp;
-                            <input value={snapchat} type="text" onChange={(e) => setSnapchat(e.target.value)} className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input defaultValue={snapchat} type="text" onChange={(e) => setSnapchat(e.target.value)} className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>

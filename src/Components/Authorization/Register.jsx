@@ -36,7 +36,7 @@ const Register = () => {
                     toast.success('Registerred successfully')
                     setInterval(() => {
                         // window.location.reload(true)
-                        navigate('/'); 
+                        navigate('/');
                     }, 2000)
                 })
                 .catch((err) => {
