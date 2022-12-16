@@ -25,8 +25,12 @@ const UpdatePersonal = () => {
     const [cv, setCV] = useState('')
     const [upwork, setUpwork] = useState('')
     const [fiver, setFiver] = useState('')
+    const [professionalDesc, setProfessionalDesc] = useState('')
+    const [profession, setProfession] = useState('')
+    const [designation, setDesignation] = useState('')
 
     const submitData = () => {
+
         const userObj = {
             name: name,
             phone: phone,
@@ -48,20 +52,20 @@ const UpdatePersonal = () => {
         axios.post(`${Baseurl}showbusiness`, userObj)
             .then((res) => {
                 console.log(res)
-                toast.info('Data updatted successfully')
+                toast.info('Data updated successfully')
                 setInterval(() => {
                     window.location.reload()
                 }, 2000);
             })
             .catch((err) => {
                 console.log(err)
-                toast.warn('Error while upating your data')
+                toast.warn('Error while updating your data')
             })
     }
 
     const fetchData = () => {
         var formdata = new FormData();
-        formdata.append("user_id", "15");
+        formdata.append("user_id", "34");
 
         var requestOptions = {
             method: 'POST',
@@ -78,14 +82,17 @@ const UpdatePersonal = () => {
                 setCnic(result.data[0].cnic)
                 setWhatsapp(result.data[0].whatsapp)
                 setWhatsappBussiness(result.data[0].whatsapp_b)
-                setAddress(result.data[0].address)
-                setDescription(result.data[0].short_desc)
                 setAge(result.data[0].age)
+                setAddress(result.data[0].address)
+                setProfession(result.data[0].profession)
+                setDesignation(result.data[0].designation)
                 setReligion(result.data[0].religion)
+                setRegion(result.data[0].region)
                 setUpwork(result.data[0].upword)
                 setFiver(result.data[0].fiverr)
-                setBio(result.data[0].long_desc)
-                setRegion(result.data[0].region)
+                // setBio(result.data[0].long_desc)
+                setDescription(result.data[0].bio)
+                setProfessionalDesc(result.data[0].professional_desc)
 
                 console.log(result)
             })
@@ -159,13 +166,13 @@ const UpdatePersonal = () => {
                     <div className='col-lg-6'>
                         <div className="mb-3">
                             <label for="exampleInputPassword1" class="form-label"><b>Profession:</b></label>
-                            <input value={desription} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input value={profession} onChange={(e) => setProfession(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
                             <label for="exampleInputPassword1" class="form-label"><b>Designation:</b></label>
-                            <input value={age} type="number" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input value={designation} onChange={(e) => setDesignation(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>
@@ -204,7 +211,7 @@ const UpdatePersonal = () => {
                     <div className='col-lg-12'>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label"><b>Bio</b></label>
-                            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="form-control" id="exampleFormControlTextarea1" rows={3} />
+                            <textarea value={desription} onChange={(e) => setBio(e.target.value)} className="form-control" id="exampleFormControlTextarea1" rows={3} />
                         </div>
                     </div>
 
@@ -214,7 +221,7 @@ const UpdatePersonal = () => {
                     <div className='col-lg-12'>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label"><b>Professional Description</b></label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows={6} />
+                            <textarea className="form-control" defaultValue={professionalDesc} onChange={(e) => setProfessionalDesc(e.target.value)} id="exampleFormControlTextarea1" rows={6} />
                         </div>
                     </div>
 
