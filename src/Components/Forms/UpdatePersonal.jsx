@@ -64,7 +64,7 @@ const UpdatePersonal = () => {
             })
     }
 
-    const fetchData = () => {
+    const fetchData = (userID) => {
         var formdata = new FormData();
         formdata.append("user_id", `${userID}`);
 
@@ -106,14 +106,15 @@ const UpdatePersonal = () => {
             let user = await localStorage.getItem('user');
             let parsed_user = JSON.parse(user)
             if (parsed_user) {
-                setUserID(parsed_user.id)
+                fetchData(parsed_user.id)
             }
         } catch {
             return null;
         }
     }
-    useEffect(() => { fetchData(); SetLocalLogin() }
+    useEffect(() => { SetLocalLogin(); }
         , [])
+
 
     return (
 

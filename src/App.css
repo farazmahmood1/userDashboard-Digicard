@@ -11,13 +11,11 @@
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
-
 }
 
 .card-home:hover {
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
   transform: scale(1.01);
-
 }
 
 .centertext {
@@ -25,16 +23,12 @@
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 
 .fixed {
   position: fixed;
 }
-
-
-
-
 
 #faq {
   margin: auto;
@@ -65,10 +59,9 @@ ul li i:after {
   user-select: none;
 }
 
-
 #faq h2 {
   /* color: #4169e1; */
-  font-family: 'hm_light', sans-serif;
+  font-family: "hm_light", sans-serif;
   font-size: 20px;
   line-height: 34px;
   text-align: left;
@@ -79,13 +72,13 @@ ul li i:after {
   display: block;
   margin: 0;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 #faq p {
   color: #333;
   text-align: left;
-  font-family: 'hm_light', sans-serif;
+  font-family: "hm_light", sans-serif;
   font-size: 14px;
   line-height: 1.45;
   position: relative;
@@ -99,7 +92,7 @@ ul li i:after {
   margin-top: 5px;
   margin-bottom: 15px;
   padding: 0 50px 0 15px;
-  transition: .3s opacity, .6s max-height;
+  transition: 0.3s opacity, 0.6s max-height;
   hyphens: auto;
   z-index: 2;
 }
@@ -123,7 +116,7 @@ ul li i:after {
   -webkit-tap-highlight-color: transparent;
 }
 
-#faq ul li+li {
+#faq ul li + li {
   margin-top: 15px;
 }
 
@@ -153,7 +146,7 @@ ul li i:after {
   transform: translate(2px, 0) rotate(-45deg);
 }
 
-#faq ul li input[type=checkbox] {
+#faq ul li input[type="checkbox"] {
   position: absolute;
   cursor: pointer;
   width: 100%;
@@ -163,36 +156,33 @@ ul li i:after {
   touch-action: manipulation;
 }
 
-#faq ul li input[type=checkbox]:checked~h2 {
+#faq ul li input[type="checkbox"]:checked ~ h2 {
   color: #000;
 }
 
-#faq ul li input[type=checkbox]:checked~p {
+#faq ul li input[type="checkbox"]:checked ~ p {
   /*margin-top: 0;*/
   max-height: 0;
-  transition: .3s;
+  transition: 0.3s;
   opacity: 0;
   /*transform: translate(0, 50%);*/
 }
 
-#faq ul li input[type=checkbox]:checked~i:before {
+#faq ul li input[type="checkbox"]:checked ~ i:before {
   transform: translate(2px, 0) rotate(45deg);
 }
 
-#faq ul li input[type=checkbox]:checked~i:after {
+#faq ul li input[type="checkbox"]:checked ~ i:after {
   transform: translate(-2px, 0) rotate(-45deg);
 }
 
-
 .ribbon {
-
   width: 150px;
   height: 150px;
   overflow: hidden;
   position: absolute;
   top: -13px;
   right: -10px;
-
 }
 
 .ribbon__content {
@@ -208,12 +198,11 @@ ul li i:after {
   background-color: #27367f;
   box-shadow: 0 0px 10px;
   color: #fff;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   text-align: center;
   border: 2px dotted #fff;
-  outline: 5px solid #DAE7FF;
-
+  outline: 5px solid #dae7ff;
 }
 
 .ribbon::before {
@@ -223,11 +212,10 @@ ul li i:after {
   border-right-color: transparent;
   position: absolute;
   z-index: -1;
-  content: '';
+  content: "";
   display: block;
   border: 5px solid #f19066;
   box-sizing: content-box;
-
 }
 
 .ribbon::after {
@@ -237,15 +225,10 @@ ul li i:after {
   border-right-color: transparent;
   position: absolute;
   z-index: -1;
-  content: '';
+  content: "";
   display: block;
   border: 5px solid #f19066;
-
 }
-
-
-
-
 
 .loader {
   color: #27367f;
@@ -266,57 +249,75 @@ ul li i:after {
 
 @-webkit-keyframes load6 {
   0% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 
   5%,
   95% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 
   10%,
   59% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em,
+      -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em,
+      -0.297em -0.775em 0 -0.477em;
   }
 
   20% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+      -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em,
+      -0.749em -0.34em 0 -0.477em;
   }
 
   38% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+      -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em,
+      -0.82em -0.09em 0 -0.477em;
   }
 
   100% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 }
 
 @keyframes load6 {
   0% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 
   5%,
   95% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 
   10%,
   59% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em,
+      -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em,
+      -0.297em -0.775em 0 -0.477em;
   }
 
   20% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+      -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em,
+      -0.749em -0.34em 0 -0.477em;
   }
 
   38% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+      -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em,
+      -0.82em -0.09em 0 -0.477em;
   }
 
   100% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 }
 
@@ -369,11 +370,11 @@ ul li i:after {
     background-color: #27367f;
     box-shadow: 0 0px 10px;
     color: #fff;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     text-transform: uppercase;
     text-align: center;
     border: 2px dotted #fff;
-    outline: 5px solid #DAE7FF;
+    outline: 5px solid #dae7ff;
   }
 }
 
@@ -385,9 +386,7 @@ ul li i:after {
 .portfolioImages {
   display: flex;
   flex-direction: row;
-
 }
-
 
 .cardBorder {
   border: 0.5px solid #5ac8fa;

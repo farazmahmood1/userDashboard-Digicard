@@ -15,7 +15,7 @@ const SeeNews = () => {
       .then((res) => {
         setLoader(false)
         setUserData(res.data)
-        console.log(res)
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err)

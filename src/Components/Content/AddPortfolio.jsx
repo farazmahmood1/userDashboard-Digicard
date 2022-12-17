@@ -13,25 +13,11 @@ const AddPortfolio = () => {
 
     const [file, setFile] = useState('');
     const [data, setData] = useState([])
-    const [roleID, setoleID] = useState()
+    const [roleID, setUserID] = useState()
+    const [userImages, setUserImages] = useState();
+    const [loader, setLoader] = useState(false)
 
     const postCollection = () => {
-        // const userObj = {
-        //     image: file,
-        //     user_id: roleID
-        // }
-        // axios.post(`${Baseurl}post_image`, userObj)
-        //     .then((res) => {
-        //         console.log(res)
-        //         toast.info('Image uploaded succesfully')
-        //         setInterval(() => {
-        //             window.location.reload()
-        //         }, 1500);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err)
-        //         toast.warn('Error while uploading image')
-        //     })
 
         var formdata = new FormData();
         formdata.append("image", file, "[PROXY]");
@@ -40,22 +26,29 @@ const AddPortfolio = () => {
         var requestOptions = {
             method: 'POST',
             body: formdata,
-            redirect: 'follow'
+            redirect: 'follow',
         };
 
         fetch(`${Baseurl}post_image`, requestOptions)
-            .then(response => response.json())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-
-
+            .then(response => response.text())
+            .then(result => {
+                toast.info('Image uploaded successfully')
+                console.log(result)
+            })
+            .catch(error => {
+                toast.warn('Error while uploading image')
+                console.log('error', error)
+            });
     }
 
     const getCollection = () => {
+        setLoader(true)
         axios.get(`${Baseurl}get_image/${roleID}`)
             .then((res) => {
                 console.log(res.data.Data)
                 setData(res.data.Data)
+                setLoader(false);
+                localStorage.setItem('image', JSON.stringify(res.data.Data))
             })
             .catch((err) => {
                 console.log(err)
@@ -63,10 +56,9 @@ const AddPortfolio = () => {
     }
 
     const deleteImage = () => {
-        axios.post(`${Baseurl}delete_image/${roleID}`)
+        axios.post(`${Baseurl}delete_image/${userImages}`)
             .then((res) => {
                 console.log(res)
-
                 toast.warn('Image removed successfully')
 
             })
@@ -76,13 +68,26 @@ const AddPortfolio = () => {
             })
     }
 
-    console.log(roleID)
+    console.log(userImages)
+    const SetLocalImages = async () => {
+        try {
+            let img = await localStorage.getItem('image');
+            let parsed_images = JSON.parse(img)
+            if (parsed_images) {
+                setUserImages(parsed_images.id)
+            }
+        } catch {
+            return null;
+        }
+    }
+
+    // console.log(roleID)
     const SetLocalLogin = async () => {
         try {
-            let user = await AsyncStorage.getItem('user');
+            let user = await localStorage.getItem('user');
             let parsed_user = JSON.parse(user)
             if (parsed_user) {
-                setoleID(parsed_user.user_id)
+                setUserID(parsed_user.image)
             }
         } catch {
             return null;
@@ -90,10 +95,13 @@ const AddPortfolio = () => {
     }
 
     useEffect(() => {
-        getCollection();
+        SetLocalImages();
+    })
+    useEffect(() => {
         SetLocalLogin();
     }, [])
 
+    useEffect(() => { getCollection() }, [])
     return (
         <div className='main-panel'>
             <div className='content-wrapper'>
@@ -103,7 +111,7 @@ const AddPortfolio = () => {
                         <div className='fileuploader'>
 
                             <label htmlFor="formFileLg" className="form-label">Add your portfolio images from here;</label>
-                            <input onchange={(e) => setFile(e.target.files[0])} className="form-control form-control-lg" id="formFileLg" type="file" />
+                            <input onChange={(e) => setFile(e.target.files[0])} className="form-control form-control-lg" id="formFileLg" type="file" />
 
                             <button className="btn btn-primary mt-2 ms-2" onClick={postCollection}>Upload</button>
                         </div>
@@ -116,23 +124,33 @@ const AddPortfolio = () => {
 
                             <div className='row'>
                                 {
-                                    data.map((items) => {
-                                        return (
-                                            <>
-                                                <div className='col-lg-3'>
-                                                    <div className="card m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
-                                                        <img src={`${allImagesUrl.itemImage}${items.image}`} style={{ height: '145px' }} className="card-img-top" alt="..." />
-                                                        <div className="card-body ">
-                                                            {/* <h5 className="card-title"> title</h5> */}
-                                                            <a onClick={deleteImage} className="btn btn-danger">Delete</a>
+                                    loader === true ?
+                                        <>
+                                            <div className='d-flex justify-content-center' style={{ marginTop: '130px' }}>
+                                                <div className='position-absolute top-50 start-50 translate-middle'>
+                                                    <div className="loader">Loading...</div>
+                                                </div>
+                                            </div>
+
+                                        </> :
+
+                                        data.map((items, index) => {
+                                            return (
+                                                <>
+                                                    <div key={index} className='col-lg-6'>
+                                                        <div className="card m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
+                                                            <img src={`${allImagesUrl.itemImage}${items.image}`} style={{ height: '145px' }} className="card-img-top" alt="..." />
+                                                            <div className="card-body ">
+                                                                {/* <h5 className="card-title"> title</h5> */}
+                                                                <a onClick={deleteImage} className="btn btn-danger">Delete</a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </>
-                                        )
-                                    })
-                                }
+                                                </>
+                                            )
+                                        })
 
+                                }
 
                             </div>
 

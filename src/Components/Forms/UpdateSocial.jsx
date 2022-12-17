@@ -98,10 +98,11 @@ const UpdateSocial = () => {
         }
     }
     useEffect(() => {
-        fetchData();
         SetLocalLogin()
     }
         , [])
+
+    useEffect(() => fetchData(), [])
 
     return (
         <div className='main-panel'>
