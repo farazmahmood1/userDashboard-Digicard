@@ -61,11 +61,11 @@ const Header = () => {
                                     <div className="preview-item-content">
                                         <h6 className="preview-subject font-weight-normal">See News</h6>
                                         <p className="font-weight-light small-text mb-0 text-muted">
-                                            2 new notifications
+                                            New notifications
                                         </p>
                                     </div>
                                 </Link>
-                                <a className="dropdown-item preview-item">
+                                {/* <a className="dropdown-item preview-item">
                                     <div className="preview-thumbnail">
                                         <div className="preview-icon bg-warning">
                                             <i className="ti-settings mx-0" />
@@ -91,7 +91,7 @@ const Header = () => {
                                         </p>
                                     </div>
 
-                                </a>
+                                </a> */}
                             </div>
                         </li>
                         <li className="nav-item nav-profile dropdown">
@@ -100,10 +100,10 @@ const Header = () => {
                                 <i className="fa-regular fa-1x fa-user" style={{ fontSize: '19px' }} />
                             </a>
                             <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a className="dropdown-item">
+                                {/* <a className="dropdown-item">
                                     <i className="ti-settings text-primary" />
                                     Settings
-                                </a>
+                                </a> */}
                                 <a onClick={logOut} className="dropdown-item">
                                     <i className="ti-power-off text-primary" />
                                     Logout

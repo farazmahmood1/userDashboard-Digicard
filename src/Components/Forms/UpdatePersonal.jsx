@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import Baseurl from '../SourceFiles/Baseurl'
-
+import { saveAs } from "file-saver";
+import allImagesUrl from '../SourceFiles/BaseUrlImage'
 
 toast.configure()
 const UpdatePersonal = () => {
@@ -28,7 +29,7 @@ const UpdatePersonal = () => {
     const [professionalDesc, setProfessionalDesc] = useState('')
     const [profession, setProfession] = useState('')
     const [designation, setDesignation] = useState('')
-    // const [userID, setUserID] = useState('')
+    const [userID, setUserID] = useState()
 
     const SetLocalLogin = async () => {
         try {
@@ -36,12 +37,13 @@ const UpdatePersonal = () => {
             let parsed_user = JSON.parse(user)
             if (parsed_user) {
                 fetchData(parsed_user.id)
+                setUserID(parsed_user.id)
             }
         } catch {
             return null;
         }
     }
-
+    console.log(userID)
     const submitData = () => {
 
         const userObj = {
@@ -62,7 +64,7 @@ const UpdatePersonal = () => {
             upword: upwork,
             fiverr: fiver
         }
-        axios.post(`${Baseurl}showbusiness`, userObj)
+        axios.post(`${Baseurl}updatebusiness/${userID}`, userObj)
             .then((res) => {
                 console.log(res)
                 toast.info('Data updated successfully')
@@ -76,9 +78,9 @@ const UpdatePersonal = () => {
             })
     }
 
-    const fetchData = (userID) => {
+    const fetchData = (ID) => {
         var formdata = new FormData();
-        formdata.append("user_id", `${userID}`);
+        formdata.append("user_id", `${ID}`);
 
         var requestOptions = {
             method: 'POST',
@@ -106,15 +108,27 @@ const UpdatePersonal = () => {
                 // setBio(result.data[0].long_desc)
                 setDescription(result.data[0].bio)
                 setProfessionalDesc(result.data[0].professional_desc)
+                setProfilePic(result.data[0].profile_photo)
+                setCoverPic(result.data[0].cover_photo)
+                setCV(result.data[0].cv)
 
                 console.log(result)
             })
             .catch(error => console.log('error', error));
     }
 
-
-    useEffect(() => { SetLocalLogin(); }
-        , [])
+    const saveCv = () => {
+        saveAs(`${allImagesUrl.itemImage}${cv}`);
+    };
+    const savePic = () => {
+        saveAs(`${allImagesUrl.itemImage}${profilePic}`);
+    };
+    const saveCover = () => {
+        saveAs(`${allImagesUrl.itemImage}${coverPic}`);
+    };
+    useEffect(() => {
+        SetLocalLogin();
+    }, [])
 
 
     return (
@@ -243,31 +257,45 @@ const UpdatePersonal = () => {
                 </div>
 
                 <div className='row mt-3'>
-                    <div className='col-lg-6'>
-                        <div className="mb-3">
-                            <label htmlFor="formFile" className="form-label"><b> Update Profile Photo</b></label>
-                            <input onChange={(e) => setProfilePic(e.target.value)} className="form-control" type="file" id="formFile" />
+                    <div className="d-flex">
+                        <div className='row'>
+                            <div className='col-lg-9'>
+                                <div className="mb-3">
+                                    <label htmlFor="formFile" className="form-label"><b> Update Profile Photo</b></label>
+                                    <input onChange={(e) => setProfilePic(e.target.value)} className="form-control" type="file" id="formFile" />
+                                </div>
+                            </div>
+                            <div className='col-lg-1'>
+                                <button className='btn btn-secondary' onClick={savePic}>View Profile</button>
+                            </div>
                         </div>
-
-                    </div>
-                    <div className='col-lg-6'>
-                        <div className="mb-3">
-                            <label htmlFor="formFile" className="form-label"><b> Update Cover Photo</b></label>
-                            <input onChange={(e) => setCoverPic(e.target.value)} className="form-control" type="file" id="formFile" />
+                        <div className='row'>
+                            <div className='col-lg-9 ms-4'>
+                                <div className="mb-3">
+                                    <label htmlFor="formFile" className="form-label"><b> Update Cover Photo</b></label>
+                                    <input onChange={(e) => setCoverPic(e.target.value)} className="form-control" type="file" id="formFile" />
+                                </div>
+                            </div>
+                            <div className="col-lg-1">
+                                <button className='btn btn-secondary' onclick={saveCover}>View Cover</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div className='row mt-3'>
-                    <div className='col-lg-12'>
+                    <div className='col-lg-10'>
                         <div className="mb-3">
                             <label htmlFor="formFile" className="form-label"><b>Update CV:</b></label>
                             <input onChange={(e) => setCV(e.target.value)} className="form-control" type="file" id="formFile" />
                         </div>
                     </div>
+                    <div className='col-lg-2 mt-4'>
+                        <button className='btn btn-secondary' onClick={saveCv}>View CV</button>
+                    </div>
                 </div>
 
-                <button onClick={submitData} type="submit" className="btn btn-primary">Submit</button>
+                <button onClick={submitData} type="submit" className="btn btn-primary">Update Profile</button>
             </div>
 
         </div>
