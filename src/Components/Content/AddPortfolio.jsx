@@ -14,71 +14,65 @@ const AddPortfolio = () => {
     const [file, setFile] = useState('');
     const [data, setData] = useState([])
     const [roleID, setUserID] = useState()
-    const [userImages, setUserImages] = useState();
     const [loader, setLoader] = useState(false)
 
     const postCollection = () => {
+        if (!file) {
+            toast.warn('Please select a file')
+        }
+        else {
+            var formdata = new FormData();
+            formdata.append("image", file, "[PROXY]");
+            formdata.append("user_id", roleID);
 
-        var formdata = new FormData();
-        formdata.append("image", file, "[PROXY]");
-        formdata.append("user_id", roleID);
+            var requestOptions = {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow',
+            };
 
-        var requestOptions = {
-            method: 'POST',
-            body: formdata,
-            redirect: 'follow',
-        };
-
-        fetch(`${Baseurl}post_image`, requestOptions)
-            .then(response => response.text())
-            .then(result => {
-                toast.info('Image uploaded successfully')
-                console.log(result)
-            })
-            .catch(error => {
-                toast.warn('Error while uploading image')
-                console.log('error', error)
-            });
+            fetch(`${Baseurl}post_image`, requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    toast.info('Image uploaded successfully')
+                    console.log(result)
+                    setInterval(() => {
+                        window.location.reload();
+                    }, 1500);
+                })
+                .catch(error => {
+                    toast.warn('Error while uploading image')
+                    console.log('error', error)
+                });
+        }
     }
 
-    const getCollection = () => {
+    const getCollection = (ID) => {
         setLoader(true)
-        axios.get(`${Baseurl}get_image/${roleID}`)
+        axios.get(`${Baseurl}get_image/${ID}`)
             .then((res) => {
                 console.log(res.data.Data)
                 setData(res.data.Data)
                 setLoader(false);
-                localStorage.setItem('image', JSON.stringify(res.data.Data))
             })
             .catch((err) => {
                 console.log(err)
             })
     }
 
-    const deleteImage = () => {
-        axios.post(`${Baseurl}delete_image/${userImages}`)
+    const deleteImage = (id) => {
+        axios.post(`${Baseurl}delete_image/${id}`)
             .then((res) => {
                 console.log(res)
-                toast.warn('Image removed successfully')
-
+                toast.warn('Image deleted successfully')
+                setInterval(() => {
+                    window.location.reload()
+                }, 1500);
             })
             .catch((err) => {
                 console.log(err)
                 toast.error('Error while deleting image')
             })
-    }
-
-    console.log(userImages)
-    const SetLocalImages = async () => {
-        try {
-            let img = await localStorage.getItem('image');
-            let parsed_images = JSON.parse(img)
-            if (parsed_images) {
-                setUserImages(parsed_images.id)
-            }
-        } catch {
-            return null;
-        }
     }
 
     // console.log(roleID)
@@ -87,7 +81,8 @@ const AddPortfolio = () => {
             let user = await localStorage.getItem('user');
             let parsed_user = JSON.parse(user)
             if (parsed_user) {
-                setUserID(parsed_user.image)
+                getCollection(parsed_user.id)
+                setUserID(parsed_user.id)
             }
         } catch {
             return null;
@@ -95,13 +90,9 @@ const AddPortfolio = () => {
     }
 
     useEffect(() => {
-        SetLocalImages();
-    })
-    useEffect(() => {
         SetLocalLogin();
     }, [])
 
-    useEffect(() => { getCollection() }, [])
     return (
         <div className='main-panel'>
             <div className='content-wrapper'>
@@ -137,12 +128,12 @@ const AddPortfolio = () => {
                                         data.map((items, index) => {
                                             return (
                                                 <>
-                                                    <div key={index} className='col-lg-6'>
+                                                    <div key={index} className='col-lg-4'>
                                                         <div className="card m-2" style={{ width: '', backgroundColor: '#7DA0FA', borderRadius: '3px' }}>
                                                             <img src={`${allImagesUrl.itemImage}${items.image}`} style={{ height: '145px' }} className="card-img-top" alt="..." />
                                                             <div className="card-body ">
                                                                 {/* <h5 className="card-title"> title</h5> */}
-                                                                <a onClick={deleteImage} className="btn btn-danger">Delete</a>
+                                                                <a onClick={() => deleteImage(items.id)} className="btn btn-danger">Delete</a>
                                                             </div>
                                                         </div>
                                                     </div>

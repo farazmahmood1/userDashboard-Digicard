@@ -22,7 +22,18 @@ const UpdateSocial = () => {
     const [linkedin, setLinkedin] = useState('')
     const [github, setGithub] = useState('')
     const [stackoverflow, setStackOverflow] = useState('')
-    const [userID, setUserID] = useState('')
+
+    const SetLocalLogin = async () => {
+        try {
+            let user = await localStorage.getItem('user');
+            let parsed_user = JSON.parse(user)
+            if (parsed_user) {
+                fetchData(parsed_user.id)
+            }
+        } catch {
+            return null;
+        }
+    }
 
     const submitData = () => {
 
@@ -54,7 +65,7 @@ const UpdateSocial = () => {
             })
     }
 
-    const fetchData = () => {
+    const fetchData = (userID) => {
         var formdata = new FormData();
         formdata.append("user_id", `${userID}`);
 
@@ -85,24 +96,10 @@ const UpdateSocial = () => {
             })
             .catch(error => console.log('error', error));
     }
-    console.log(userID)
-    const SetLocalLogin = async () => {
-        try {
-            let user = await localStorage.getItem('user');
-            let parsed_user = JSON.parse(user)
-            if (parsed_user) {
-                setUserID(parsed_user.id)
-            }
-        } catch {
-            return null;
-        }
-    }
+
     useEffect(() => {
         SetLocalLogin()
-    }
-        , [])
-
-    useEffect(() => fetchData(), [])
+    }, [])
 
     return (
         <div className='main-panel'>

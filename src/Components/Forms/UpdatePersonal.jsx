@@ -28,7 +28,19 @@ const UpdatePersonal = () => {
     const [professionalDesc, setProfessionalDesc] = useState('')
     const [profession, setProfession] = useState('')
     const [designation, setDesignation] = useState('')
-    const [userID, setUserID] = useState('')
+    // const [userID, setUserID] = useState('')
+
+    const SetLocalLogin = async () => {
+        try {
+            let user = await localStorage.getItem('user');
+            let parsed_user = JSON.parse(user)
+            if (parsed_user) {
+                fetchData(parsed_user.id)
+            }
+        } catch {
+            return null;
+        }
+    }
 
     const submitData = () => {
 
@@ -100,18 +112,7 @@ const UpdatePersonal = () => {
             .catch(error => console.log('error', error));
     }
 
-    console.log(userID)
-    const SetLocalLogin = async () => {
-        try {
-            let user = await localStorage.getItem('user');
-            let parsed_user = JSON.parse(user)
-            if (parsed_user) {
-                fetchData(parsed_user.id)
-            }
-        } catch {
-            return null;
-        }
-    }
+
     useEffect(() => { SetLocalLogin(); }
         , [])
 
