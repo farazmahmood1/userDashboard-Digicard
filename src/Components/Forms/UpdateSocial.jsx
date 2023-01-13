@@ -22,13 +22,15 @@ const UpdateSocial = () => {
     const [linkedin, setLinkedin] = useState('')
     const [github, setGithub] = useState('')
     const [stackoverflow, setStackOverflow] = useState('')
+    const [userID, setUserID] = useState()
 
     const SetLocalLogin = async () => {
         try {
             let user = await localStorage.getItem('user');
             let parsed_user = JSON.parse(user)
             if (parsed_user) {
-                fetchData(parsed_user.id)
+                fetchData(parsed_user.id);
+                setUserID(parsed_user.id)
             }
         } catch {
             return null;
@@ -65,9 +67,9 @@ const UpdateSocial = () => {
             })
     }
 
-    const fetchData = (userID) => {
+    const fetchData = (ID) => {
         var formdata = new FormData();
-        formdata.append("user_id", `${userID}`);
+        formdata.append("user_id", ID);
 
         var requestOptions = {
             method: 'POST',

@@ -35,7 +35,7 @@ const UpdatePersonal = () => {
         try {
             let user = await localStorage.getItem('user');
             let parsed_user = JSON.parse(user)
-            if (parsed_user) {
+            if (parsed_user !== null) {
                 fetchData(parsed_user.id)
                 setUserID(parsed_user.id)
             }
@@ -43,7 +43,8 @@ const UpdatePersonal = () => {
             return null;
         }
     }
-    console.log(userID)
+
+
     const submitData = () => {
 
         const userObj = {
@@ -64,7 +65,7 @@ const UpdatePersonal = () => {
             upword: upwork,
             fiverr: fiver
         }
-        axios.post(`${Baseurl}updatebusiness/${userID}`, userObj)
+        axios.post(`${Baseurl}updatesocials/${userID}`, userObj)
             .then((res) => {
                 console.log(res)
                 toast.info('Data updated successfully')
@@ -80,8 +81,7 @@ const UpdatePersonal = () => {
 
     const fetchData = (ID) => {
         var formdata = new FormData();
-        formdata.append("user_id", `${ID}`);
-
+        formdata.append("user_id", ID);
         var requestOptions = {
             method: 'POST',
             body: formdata,
@@ -139,28 +139,28 @@ const UpdatePersonal = () => {
                 <div className='row'>
                     <div className='col-lg-6'>
                         <div className="mb-3" style={{ borderColor: name === "" && fieldStatus === true ? "red" : 'white' }}>
-                            <label for="exampleInputPassword1" class="form-label"><b>Name:</b></label>
-                            <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Name:</b></label>
+                            <input defaultValue={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Phone Number:</b></label>
-                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Phone Number:</b></label>
+                            <input defaultValue={phone} onChange={(e) => setPhone(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>
                 <div className='row mt-3'>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>CNIC Number:</b></label>
-                            <input value={cnic} onChange={(e) => setCnic(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>CNIC Number:</b></label>
+                            <input defaultValue={cnic} onChange={(e) => setCnic(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>WhatsApp Number:</b></label>
-                            <input value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>WhatsApp Number:</b></label>
+                            <input defaultValue={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>
@@ -168,15 +168,15 @@ const UpdatePersonal = () => {
                 <div className='row mt-3' >
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>WhatsApp Business:</b></label>
-                            <input value={whatsappbusiness} onChange={(e) => setWhatsappBussiness(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>WhatsApp Business:</b></label>
+                            <input defaultValue={whatsappbusiness} onChange={(e) => setWhatsappBussiness(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
 
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Age:</b></label>
-                            <input value={age} onChange={(e) => setAge(e.target.value)} type="number" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Age:</b></label>
+                            <input defaultValue={age} onChange={(e) => setAge(e.target.value)} type="number" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>
@@ -184,8 +184,8 @@ const UpdatePersonal = () => {
                 <div className='row mt-3'>
                     <div className='col-lg-12'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Address:</b></label>
-                            <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Address:</b></label>
+                            <input defaultValue={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
 
@@ -194,14 +194,14 @@ const UpdatePersonal = () => {
                 <div className='row mt-3'>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Profession:</b></label>
-                            <input value={profession} onChange={(e) => setProfession(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Profession:</b></label>
+                            <input defaultValue={profession} onChange={(e) => setProfession(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Designation:</b></label>
-                            <input value={designation} onChange={(e) => setDesignation(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Designation:</b></label>
+                            <input defaultValue={designation} onChange={(e) => setDesignation(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>
@@ -209,13 +209,13 @@ const UpdatePersonal = () => {
                 <div className='row mt-3'>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Religion:</b></label>
-                            <input value={religion} onChange={(e) => setReligion(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Religion:</b></label>
+                            <input defaultValue={religion} onChange={(e) => setReligion(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Region:</b></label>
+                            <label for="exampleInputPassword1" className="form-label"><b>Region:</b></label>
                             <input value={region} onChange={(e) => setRegion(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
@@ -224,14 +224,14 @@ const UpdatePersonal = () => {
                 <div className='row mt-3'>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Upwork:</b></label>
-                            <input value={upwork} onChange={(e) => setUpwork(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Upwork:</b></label>
+                            <input defaultValue={upwork} onChange={(e) => setUpwork(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                     <div className='col-lg-6'>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" class="form-label"><b>Fiver:</b></label>
-                            <input value={fiver} onChange={(e) => setFiver(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="exampleInputPassword1" className="form-label"><b>Fiver:</b></label>
+                            <input defaultValue={fiver} onChange={(e) => setFiver(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
                 </div>
@@ -240,7 +240,7 @@ const UpdatePersonal = () => {
                     <div className='col-lg-12'>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label"><b>Bio</b></label>
-                            <textarea value={desription} onChange={(e) => setBio(e.target.value)} className="form-control" id="exampleFormControlTextarea1" rows={3} />
+                            <textarea defaultValue={desription} onChange={(e) => setBio(e.target.value)} className="form-control" id="exampleFormControlTextarea1" rows={3} />
                         </div>
                     </div>
 

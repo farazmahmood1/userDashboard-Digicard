@@ -24,7 +24,7 @@ function App() {
  
   const SetLocalLogin = async () => {
     try {
-      let userLogin = await AsyncStorage.getItem("logIN");
+      let userLogin = await localStorage.getItem("logIN");
       let parsed = JSON.parse(userLogin);
       if (parsed !== null) {
         SetLogin(parsed);

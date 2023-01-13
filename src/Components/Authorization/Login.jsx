@@ -15,7 +15,6 @@ const Login = () => {
         if (!name && !password) {
             toast.warning('Please fill all fields')
             setFieldStatus(true)
-
         }
         else if (name && !password) {
             toast.warning('Please enter your password')
@@ -33,9 +32,9 @@ const Login = () => {
                     console.log(res.data.customer)
                     toast.success('Logging In')
 
-                    AsyncStorage.setItem('logIN', JSON.stringify(true));
-                    AsyncStorage.setItem('password', JSON.stringify(password));
-                    AsyncStorage.setItem('user', JSON.stringify(res.data.customer));
+                    localStorage.setItem('logIN', JSON.stringify(true));
+                    localStorage.setItem('password', JSON.stringify(password));
+                    localStorage.setItem('user', JSON.stringify(res.data.customer));
                     setInterval(() => {
                         window.location.reload(true)
                     }, 1500)
@@ -61,7 +60,7 @@ const Login = () => {
                                 <h6 className="font-weight-light">Sign in to continue.</h6>
                                 <div className="pt-3">
                                     <div className="form-group">
-                                        <input type="email" className="form-control form-control-lg" style={{ borderColor: fieldStatus === true && name === "" ? 'red' : '#CED4DA' }} onChange={(e) => setName(e.target.value)} id="exampleInputEmail1" placeholder="Username" />
+                                        <input type="email" className="form-control form-control-lg" style={{ borderColor: fieldStatus === true && name === "" ? 'red' : '#CED4DA' }} onChange={(e) => setName(e.target.value)} id="exampleInputEmail1" placeholder="Email" />
                                     </div>
                                     <div className="form-group">
                                         <input type="password" className="form-control form-control-lg" style={{ borderColor: fieldStatus === true && password === "" ? 'red' : '#CED4DA' }} onChange={(e) => setPassword(e.target.value)} id="exampleInputPassword1" placeholder="Password" />
