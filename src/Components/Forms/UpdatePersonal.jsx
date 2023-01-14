@@ -44,7 +44,6 @@ const UpdatePersonal = () => {
         }
     }
 
-
     const submitData = () => {
 
         const userObj = {
@@ -130,7 +129,6 @@ const UpdatePersonal = () => {
         SetLocalLogin();
     }, [])
 
-
     return (
 
         <div className='main-panel'>
@@ -188,7 +186,6 @@ const UpdatePersonal = () => {
                             <input defaultValue={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                     </div>
-
                 </div>
 
                 <div className='row mt-3'>
@@ -253,7 +250,6 @@ const UpdatePersonal = () => {
                             <textarea className="form-control" defaultValue={professionalDesc} onChange={(e) => setProfessionalDesc(e.target.value)} id="exampleFormControlTextarea1" rows={6} />
                         </div>
                     </div>
-
                 </div>
 
                 <div className='row mt-3'>
@@ -282,7 +278,6 @@ const UpdatePersonal = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className='row mt-3'>
                     <div className='col-lg-10'>
                         <div className="mb-3">
@@ -294,10 +289,8 @@ const UpdatePersonal = () => {
                         <button className='btn btn-secondary' onClick={saveCv}>View CV</button>
                     </div>
                 </div>
-
                 <button onClick={submitData} type="submit" className="btn btn-primary">Update Profile</button>
             </div>
-
         </div>
 
     )

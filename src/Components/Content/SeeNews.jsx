@@ -21,6 +21,7 @@ const SeeNews = () => {
         console.log(err)
       })
   }
+
   useEffect(() => { recieveData() }, [])
 
   return (
@@ -40,7 +41,6 @@ const SeeNews = () => {
               <div className='mt-3 mb-4'>
                 <h3 className='ms-3'><b> WHAT'S NEW</b></h3>
               </div>
-
               {
                 userData.map((items) => {
                   return (

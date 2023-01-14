@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from 'react'
 import allImagesUrl from '../SourceFiles/BaseUrlImage'
-import { AsyncStorage } from 'AsyncStorage';
-
 
 toast.configure()
 const AddPortfolio = () => {
@@ -15,6 +13,19 @@ const AddPortfolio = () => {
     const [data, setData] = useState([])
     const [roleID, setUserID] = useState()
     const [loader, setLoader] = useState(false)
+
+    const SetLocalLogin = async () => {
+        try {
+            let user = await localStorage.getItem('user');
+            let parsed_user = JSON.parse(user)
+            if (parsed_user) {
+                getCollection(parsed_user.id)
+                setUserID(parsed_user.id)
+            }
+        } catch {
+            return null;
+        }
+    }
 
     const postCollection = () => {
         if (!file) {
@@ -75,20 +86,6 @@ const AddPortfolio = () => {
             })
     }
 
-    // console.log(roleID)
-    const SetLocalLogin = async () => {
-        try {
-            let user = await localStorage.getItem('user');
-            let parsed_user = JSON.parse(user)
-            if (parsed_user) {
-                getCollection(parsed_user.id)
-                setUserID(parsed_user.id)
-            }
-        } catch {
-            return null;
-        }
-    }
-
     useEffect(() => {
         SetLocalLogin();
     }, [])
@@ -100,10 +97,8 @@ const AddPortfolio = () => {
                     <div className='card-body'>
                         <h2>Add your images for the portfolio from here:</h2>
                         <div className='fileuploader'>
-
                             <label htmlFor="formFileLg" className="form-label">Add your portfolio images from here;</label>
                             <input onChange={(e) => setFile(e.target.files[0])} className="form-control form-control-lg" id="formFileLg" type="file" />
-
                             <button className="btn btn-primary mt-2 ms-2" onClick={postCollection}>Upload</button>
                         </div>
                     </div>
@@ -112,7 +107,6 @@ const AddPortfolio = () => {
                     <div className="card-body">
                         <h2>Delete your portfolio images:</h2>
                         <div className="portfolioImages">
-
                             <div className='row'>
                                 {
                                     loader === true ?
@@ -124,7 +118,6 @@ const AddPortfolio = () => {
                                             </div>
 
                                         </> :
-
                                         data.map((items, index) => {
                                             return (
                                                 <>
@@ -140,11 +133,8 @@ const AddPortfolio = () => {
                                                 </>
                                             )
                                         })
-
                                 }
-
                             </div>
-
                         </div>
                     </div>
                 </div>

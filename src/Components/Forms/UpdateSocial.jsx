@@ -53,7 +53,7 @@ const UpdateSocial = () => {
             gmail: email,
             printest: pinterest
         }
-        axios.post(`${Baseurl}showsocials`, userData)
+        axios.post(`${Baseurl}updatesocials/${userID}`, userData)
             .then((res) => {
                 console.log(res)
                 toast.info("Data successfully updated")

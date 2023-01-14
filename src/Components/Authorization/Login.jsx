@@ -1,4 +1,3 @@
-import { AsyncStorage } from 'AsyncStorage'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -43,8 +42,7 @@ const Login = () => {
                     console.log(err)
                     toast.warn("Incorrect Credentials");
                 })
-        }
-    }
+        }}
 
     return (
         <div>
@@ -91,7 +89,6 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                {/* content-wrapper ends */}
             </div>
         </div>
 

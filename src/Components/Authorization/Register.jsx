@@ -48,6 +48,7 @@ const Register = () => {
 
 
     return (
+        
         <div>
             <div className="container-fluid page-body-wrapper full-page-wrapper">
                 <div className="content-wrapper d-flex align-items-center auth px-0">
@@ -98,7 +99,6 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
-                {/* content-wrapper ends */}
             </div>
 
         </div>
